@@ -3,23 +3,34 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA1548AB248594D80049C40D /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = BA1548AA248594D80049C40D /* Readme.md */; };
+		BA3C3DD4247EA5F100A45434 /* Finch.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C3DD3247EA5F100A45434 /* Finch.swift */; };
+		BA3C3DD6247EA61400A45434 /* FinchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C3DD5247EA61400A45434 /* FinchManager.swift */; };
+		BA3C3DD8247EA85C00A45434 /* FinchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C3DD7247EA85C00A45434 /* FinchDelegate.swift */; };
+		BA3C3DDA247EBE0D00A45434 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C3DD9247EBE0D00A45434 /* MainViewController.swift */; };
+		BA3C3DE6247EF17D00A45434 /* FinchUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C3DE5247EF17D00A45434 /* FinchUtilities.swift */; };
 		BA60AEB9247E8F6B0037CAFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA60AEB8247E8F6B0037CAFE /* AppDelegate.swift */; };
-		BA60AEBB247E8F6B0037CAFE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA60AEBA247E8F6B0037CAFE /* SceneDelegate.swift */; };
-		BA60AEBD247E8F6B0037CAFE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA60AEBC247E8F6B0037CAFE /* ViewController.swift */; };
+		BA60AEBD247E8F6B0037CAFE /* DeviceChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA60AEBC247E8F6B0037CAFE /* DeviceChooserViewController.swift */; };
 		BA60AEC0247E8F6B0037CAFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA60AEBE247E8F6B0037CAFE /* Main.storyboard */; };
 		BA60AEC2247E8F700037CAFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA60AEC1247E8F700037CAFE /* Assets.xcassets */; };
 		BA60AEC5247E8F700037CAFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA60AEC3247E8F700037CAFE /* LaunchScreen.storyboard */; };
+		BA60AECE247E8FBA0037CAFE /* BirdbrainBLE in Frameworks */ = {isa = PBXBuildFile; productRef = BA60AECD247E8FBA0037CAFE /* BirdbrainBLE */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BA1548AA248594D80049C40D /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
+		BA3C3DD3247EA5F100A45434 /* Finch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Finch.swift; sourceTree = "<group>"; };
+		BA3C3DD5247EA61400A45434 /* FinchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinchManager.swift; sourceTree = "<group>"; };
+		BA3C3DD7247EA85C00A45434 /* FinchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinchDelegate.swift; sourceTree = "<group>"; };
+		BA3C3DD9247EBE0D00A45434 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		BA3C3DE5247EF17D00A45434 /* FinchUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinchUtilities.swift; sourceTree = "<group>"; };
 		BA60AEB5247E8F6B0037CAFE /* FinchBasicApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinchBasicApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA60AEB8247E8F6B0037CAFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BA60AEBA247E8F6B0037CAFE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BA60AEBC247E8F6B0037CAFE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BA60AEBC247E8F6B0037CAFE /* DeviceChooserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceChooserViewController.swift; sourceTree = "<group>"; };
 		BA60AEBF247E8F6B0037CAFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BA60AEC1247E8F700037CAFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA60AEC4247E8F700037CAFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -31,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA60AECE247E8FBA0037CAFE /* BirdbrainBLE in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +52,7 @@
 		BA60AEAC247E8F6B0037CAFE = {
 			isa = PBXGroup;
 			children = (
+				BA1548AA248594D80049C40D /* Readme.md */,
 				BA60AEB7247E8F6B0037CAFE /* FinchBasicApp */,
 				BA60AEB6247E8F6B0037CAFE /* Products */,
 			);
@@ -56,15 +69,27 @@
 		BA60AEB7247E8F6B0037CAFE /* FinchBasicApp */ = {
 			isa = PBXGroup;
 			children = (
+				BA60AECF247E90C70037CAFE /* Finch */,
 				BA60AEB8247E8F6B0037CAFE /* AppDelegate.swift */,
-				BA60AEBA247E8F6B0037CAFE /* SceneDelegate.swift */,
-				BA60AEBC247E8F6B0037CAFE /* ViewController.swift */,
+				BA60AEBC247E8F6B0037CAFE /* DeviceChooserViewController.swift */,
 				BA60AEBE247E8F6B0037CAFE /* Main.storyboard */,
 				BA60AEC1247E8F700037CAFE /* Assets.xcassets */,
 				BA60AEC3247E8F700037CAFE /* LaunchScreen.storyboard */,
 				BA60AEC6247E8F700037CAFE /* Info.plist */,
+				BA3C3DD9247EBE0D00A45434 /* MainViewController.swift */,
 			);
 			path = FinchBasicApp;
+			sourceTree = "<group>";
+		};
+		BA60AECF247E90C70037CAFE /* Finch */ = {
+			isa = PBXGroup;
+			children = (
+				BA3C3DD3247EA5F100A45434 /* Finch.swift */,
+				BA3C3DD5247EA61400A45434 /* FinchManager.swift */,
+				BA3C3DD7247EA85C00A45434 /* FinchDelegate.swift */,
+				BA3C3DE5247EF17D00A45434 /* FinchUtilities.swift */,
+			);
+			path = Finch;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +108,9 @@
 			dependencies = (
 			);
 			name = FinchBasicApp;
+			packageProductDependencies = (
+				BA60AECD247E8FBA0037CAFE /* BirdbrainBLE */,
+			);
 			productName = FinchBasicApp;
 			productReference = BA60AEB5247E8F6B0037CAFE /* FinchBasicApp.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +139,9 @@
 				Base,
 			);
 			mainGroup = BA60AEAC247E8F6B0037CAFE;
+			packageReferences = (
+				BA60AECC247E8FBA0037CAFE /* XCRemoteSwiftPackageReference "BirdbrainBLE" */,
+			);
 			productRefGroup = BA60AEB6247E8F6B0037CAFE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,6 +158,7 @@
 			files = (
 				BA60AEC5247E8F700037CAFE /* LaunchScreen.storyboard in Resources */,
 				BA60AEC2247E8F700037CAFE /* Assets.xcassets in Resources */,
+				BA1548AB248594D80049C40D /* Readme.md in Resources */,
 				BA60AEC0247E8F6B0037CAFE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,9 +170,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA60AEBD247E8F6B0037CAFE /* ViewController.swift in Sources */,
+				BA3C3DD6247EA61400A45434 /* FinchManager.swift in Sources */,
+				BA3C3DD8247EA85C00A45434 /* FinchDelegate.swift in Sources */,
+				BA60AEBD247E8F6B0037CAFE /* DeviceChooserViewController.swift in Sources */,
+				BA3C3DE6247EF17D00A45434 /* FinchUtilities.swift in Sources */,
+				BA3C3DDA247EBE0D00A45434 /* MainViewController.swift in Sources */,
 				BA60AEB9247E8F6B0037CAFE /* AppDelegate.swift in Sources */,
-				BA60AEBB247E8F6B0037CAFE /* SceneDelegate.swift in Sources */,
+				BA3C3DD4247EA5F100A45434 /* Finch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +323,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 82SSMRBK5P;
 				INFOPLIST_FILE = FinchBasicApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -305,6 +342,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 82SSMRBK5P;
 				INFOPLIST_FILE = FinchBasicApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -338,6 +376,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BA60AECC247E8FBA0037CAFE /* XCRemoteSwiftPackageReference "BirdbrainBLE" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BirdBrainTechnologies/BirdbrainBLE";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BA60AECD247E8FBA0037CAFE /* BirdbrainBLE */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA60AECC247E8FBA0037CAFE /* XCRemoteSwiftPackageReference "BirdbrainBLE" */;
+			productName = BirdbrainBLE;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BA60AEAD247E8F6B0037CAFE /* Project object */;
 }
