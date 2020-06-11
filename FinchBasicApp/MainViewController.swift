@@ -1,5 +1,11 @@
+/* Bambi Brewer, BirdBrain Technologies, 6/10/2020 */
+/* This view controller demonstrates how you can use ARkit with the Finch. The app uses ARKit to track an object that is defined in the Images folder in Assets.xcassets. Here, that obect is a book cover named monster. ARKit and SceneKit can be used to tell you where that object is located within the view of the camera, and then the Finch moves to follow the object. */
+/* This app assumes that the device (most likely an iPhone) running the project is mounted to the top of the Finch with the back camera pointed out over the Finch's beak. */
+
 import UIKit
 import BirdbrainBLE
+import SceneKit
+import ARKit
 
 /* Custom type to tell us whether or not the Finch is connected. */
 enum DeviceStatus {
@@ -9,16 +15,23 @@ enum DeviceStatus {
 
 class MainViewController: UIViewController {
     
+    @IBOutlet weak var sceneView: ARSCNView!    // The view we use to track the object
+    
+    @IBOutlet weak var trackingButton: UIButton!    // Used to toggle tracking on/off
+    
+    @IBOutlet weak var statusLabel: UILabel!    // Tells you whether or not the Finch is connected
+    
     /* These two variables are initialized by prepare() in the previous view controller. */
     var finchManager: FinchManager? // Required by BirdBrainBLE
     var finch: Finch?               // Represents the Finch
     
     var finchSensorState: Finch.SensorState?   // Contains Finch sensor data
     
-    @IBOutlet weak var statusLabel: UILabel!
-    @IBOutlet weak var distanceLabel: UILabel!
-    @IBOutlet weak var lightLabel: UILabel!
-    @IBOutlet weak var lineLabel: UILabel!
+    var finchTimer: Timer?      // Timer to control the Finch's movements based on the position of the tracked object
+    
+    var trackedObjectNode: SCNNode?     // Node that represents the position of the tracked object
+    
+    var tracking = false    // Indicates whether or not the robot is currently tracking the object
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,47 +43,65 @@ class MainViewController: UIViewController {
         // listen for disconnections
         let _ = finch?.startStateChangeNotifications()
         
+        // Set the view's delegate
+        sceneView.delegate = self
+        
+        
+        
     }
-    
-    /* This function changes the color of the Finch beak and tail when the user adjusts the color slider. */
-    @IBAction func
-        colorSliderChanged(_ sender: UISlider) {
-        
-        var colors: Array<Int>
-        
-        switch (sender.value) {
-        case 0..<1: colors = [100,100,100]
-        case 1..<2: colors = [100,100,0]
-        case 2..<3: colors = [0,100,100]
-        case 3..<4: colors = [0,100,0]
-        case 4..<5: colors = [100,0,100]
-        case 5..<6: colors = [100,0,0]
-        case 6..<7: colors = [0,0,100]
-        default: colors = [0,0,0]
+
+    @IBAction func trackingButtonPressed(_ sender: UIButton) {
+        tracking = !tracking
+
+        if (tracking) {
+            trackingButton.setTitle("STOP TRACKING", for: .normal)
+            /* We set up a timer that will call itself repeatedly and update the Finch based on whether or not the object we are tracking is currently in the scene. */
+            finchTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+                if let node = self.trackedObjectNode, let pointOfView = self.sceneView.pointOfView { // if the Finch node and the camera are defined
+                    if self.sceneView.isNode(node, insideFrustumOf: pointOfView) {  // If the tracked object is visible on camera
+                        
+                        // Turn the beak green to show that it can follow the object. This Bluetooth command many occasionally be overwritten by the motor commands.
+                        self.finch?.setBeak(red: 0, green: 100, blue: 0)
+                        
+                        // Find the position of the tracked object on the screen of the device (coordinates in pixels)
+                        let nodePositionOnScreen = self.sceneView.projectPoint(node.presentation.worldPosition)
+                        
+                        // Normalize the x-position by the width of the device. Now x = 0.5 is the center of the screen.
+                        let x = nodePositionOnScreen.x/Float(UIScreen.main.bounds.width)
+                        
+                        /* If the tracked object is on the left of the screen, Finch needs to turn left. If the tracked object is on the right of the screen, Finch needs to turn right. Within a narrow band in the center, we want the Finch to move forward. If the Finch is outside the bounds of the screen, we want to stop. */
+                        if ((x < 0) || (x > 1)) {
+                            self.finch?.stop()
+                        } else if (x < 0.45) {
+                            print("left")
+                            self.finch?.setMotors(leftSpeed: 0, rightSpeed: 20)
+                        } else if (x > 0.55) {
+                            print("right")
+                            self.finch?.setMotors(leftSpeed: 20, rightSpeed: 0)
+                        } else {
+                            self.finch?.setMotors(leftSpeed: 20, rightSpeed: 20)
+                        }
+                        print("x: \(x), z: \(node.presentation.worldPosition.z)")
+                    } else {
+                        // When you send Bluetooth commands very close together, the second may overwrite the first. Here, the stop command may sometimes overwrite the command to turn the beak red.
+                        self.finch?.setBeak(red: 100, green: 0, blue: 0)
+                        self.finch?.stop()
+                    }
+                } else {
+                    // When you send Bluetooth commands very close together, the second may overwrite the first. Here, the stop command may sometimes overwrite the command to turn the beak red.
+                    self.finch?.setBeak(red: 100, green: 0, blue: 0)
+                    self.finch?.stop()
+                }
+            }
+        } else {
+            trackingButton.setTitle("START TRACKING", for: .normal)
+            self.finch?.stopAll()
+            finchTimer?.invalidate()
         }
-        self.finch?.setBeak(red: colors[0],green: colors[1],blue: colors[2])
-        self.finch?.setTail(port: "all",red: colors[0],green: colors[1],blue: colors[2])
     }
     
-    /* The next four functions are called when the user taps the buttons to make the Finch move. */
-    @IBAction func forwardButtonPressed(_ sender: UIButton) {
-        self.finch?.setMove(direction: "F", distance: 20, speed: 50)
-    }
-    
-    @IBAction func backButtonPressed(_ sender: UIButton) {
-        self.finch?.setMove(direction: "B", distance: 20, speed: 50)
-    }
-    
-    @IBAction func leftButtonPressed(_ sender: UIButton) {
-        self.finch?.setTurn(direction: "L", angle: 90, speed: 50)
-    }
-    
-    @IBAction func rightButtonPressed(_ sender: UIButton) {
-        self.finch?.setTurn(direction: "R", angle: 90, speed: 50)
-    }
-    
+    /* This function updates the label on the screen to tell us if the Finch has become disconnected. */
     private func updateDeviceStatus(_ deviceStatus: DeviceStatus) {
-        // TODO: show/hide device status view as appropriate, display icons/button, etc.
         switch deviceStatus {
         case .connected:
             self.statusLabel.text = "Connected"
@@ -78,6 +109,52 @@ class MainViewController: UIViewController {
             self.statusLabel.text = "Disconnected"
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Create a session configuration - in this app, we will track images
+        let configuration = ARImageTrackingConfiguration()
+        
+        // Set up the image to track
+        if let imageToTrack = ARReferenceImage.referenceImages(inGroupNamed: "Images", bundle: Bundle.main)  {//Bundle.main means look in this project
+            configuration.trackingImages = imageToTrack
+            configuration.maximumNumberOfTrackedImages = 1
+            print("Images successfully added")
+        }
+
+        // Run the view's session
+        sceneView.session.run(configuration)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Pause the view's session
+        sceneView.session.pause()
+    }
+    
+}
+
+// MARK: - ARSCNViewDelegate
+
+extension MainViewController: ARSCNViewDelegate {
+    // Override to create and configure nodes for anchors added to the view's session. Here, the anchor is the image detected on the screen, and we will use its position to control the Finch
+    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
+        let node = SCNNode()
+        
+        if let imageAnchor = anchor as? ARImageAnchor {
+            let plane = SCNPlane(width: imageAnchor.referenceImage.physicalSize.width, height: imageAnchor.referenceImage.physicalSize.height)
+            plane.firstMaterial?.diffuse.contents = UIColor(white: 1.0, alpha: 0.5)
+            let planeNode = SCNNode(geometry: plane)
+            planeNode.transform = SCNMatrix4MakeRotation(-Float.pi/2, 1, 0, 0)
+            trackedObjectNode = planeNode
+            node.addChildNode(planeNode)
+            
+        }
+        return node
+    }
+    
 }
 
 //MARK: - UARTDeviceManagerDelegate
@@ -127,16 +204,7 @@ extension MainViewController: FinchDelegate {
     /* This is the function that is called when the Finch has new sensor data. That data is in the state variable. */
     func finch(_ finch: Finch, sensorState: Finch.SensorState) {
         self.finchSensorState = sensorState
-        self.distanceLabel.text = String(sensorState.distance)
-        
-        /* The Finch light sensors are affected by the light from the beak, so we are going to correct them. This is only a small correction, so you can just use state.leftLight and state.rightLight if you don't care or you know the beak is off. No corrections are necessary for other Finch sensors. */
-        let correctedLightSensors = finch.correctLightSensorValues()
-        if let correctLeft = correctedLightSensors[0], let correctRight = correctedLightSensors[1] {
-            self.lightLabel.text = "(" + String(correctLeft) + ", " + String(correctRight) + ")"
-        }
-        
-        self.lineLabel.text = "(" + String(sensorState.leftLine) + ", " + String(sensorState.rightLine) + ")"
-        
+        // Not doing anything with the sensor info in this app
     }
     
     /* This function is called when the Finch can't get the state due to an error. */

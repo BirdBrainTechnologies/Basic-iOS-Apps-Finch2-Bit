@@ -4,10 +4,13 @@ All of the classes specific to the Finch are in the Finch folder. For most basic
 
 The app opens with a screen that enables you to choose your Finch and connect to it. You will need to do this in your app, so you probably want to leave this along (though you may want to make it more beautiful). Once you are connected, the app uses a segue to move to the MainViewController. Before it does that, it calls prepare() in the DeviceChooserViewController. This sets up the Finch so that it can be used in the MainViewController. It is VERY IMPORTANT that you set up the finch and finchManager variables for the MainViewController before this segue. Otherwise, your Finch will not work in that scene. You need to override prepare() in the same way for any other segues that are part of your program. 
 
-The MainViewController contains the variables finch: Finch?, finchManager: FinchManager?, and finchSensorState: Finch.SensorState?. finchManager is required by the Bluetooth package. The finch variable has public functions that you can use to control the lights, motors, and buzzers of the Finch. Those public functions are listed below. finchSensorState is a structure that contains the sensor information for the Finch. the variables inside that structure that contain the Finch data are described below. 
+The MainViewController demonstrates how you can use ARkit with the Finch. The app uses ARKit to track an object that is defined in the Images folder in Assets.xcassets. Here, that obect is a book cover named monster. ARKit and SceneKit can be used to tell you where that object is located within the view of the camera, and then the Finch moves to follow the object.
 
+This app assumes that the device (most likely an iPhone) running the project is mounted to the top of the Finch with the back camera pointed out over the Finch's beak.
 
 Public Finch Functions:
+
+NOTE: If you issue Bluetooth commands too close together, the last command may overwrite earlier ones. For example, if you set the color of the Finch beak and then immediately set the wheels, you may not see the effect of the beak command.
 
 Method Signature: setMove(direction: String, distance: Double, speed: Int)
 Description: Moves the Finch forward or backward for a specified distance at a specified speed. The method requires a direction ("F" for forward or "B’" for backward), a distance in centimeters, and a speed from 0-100.
