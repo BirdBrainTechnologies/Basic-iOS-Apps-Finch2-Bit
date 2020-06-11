@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -56,96 +55,7 @@
                     <view key="view" contentMode="scaleToFill" id="0cM-Td-Kof">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="iqd-GI-UOf" userLabel="Outputs">
-                                <rect key="frame" x="50" y="94" width="314" height="718"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="WcM-ik-a1s" userLabel="MovementStack">
-                                        <rect key="frame" x="0.0" y="0.0" width="314" height="530"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ET3-gI-ci9" userLabel="ForwardButton">
-                                                <rect key="frame" x="0.0" y="0.0" width="314" height="114.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
-                                                <state key="normal" image="arrow.up.circle" catalog="system">
-                                                    <color key="titleColor" red="0.031372549020000001" green="0.60784313729999995" blue="0.6705882353" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="80" scale="large" weight="medium"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="forwardButtonPressed:" destination="vAS-eb-8mD" eventType="touchUpInside" id="1LX-nM-NKd"/>
-                                                </connections>
-                                            </button>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="whP-nO-IIa" userLabel="LeftRightStack">
-                                                <rect key="frame" x="0.0" y="122.5" width="314" height="285"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0q-60-VtK" userLabel="LeftButton">
-                                                        <rect key="frame" x="0.0" y="85.5" width="144" height="114.5"/>
-                                                        <state key="normal" image="arrow.left.circle" catalog="system">
-                                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="80" scale="large" weight="medium"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="leftButtonPressed:" destination="vAS-eb-8mD" eventType="touchUpInside" id="OxF-4v-yeu"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Nd-t1-a7S" userLabel="RightButton">
-                                                        <rect key="frame" x="170" y="85.5" width="144" height="114.5"/>
-                                                        <state key="normal" image="arrow.right.circle" catalog="system">
-                                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="80" scale="large" weight="medium"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="rightButtonPressed:" destination="vAS-eb-8mD" eventType="touchUpInside" id="npG-dM-knW"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ZR-bX-J5g" userLabel="BackwardButton">
-                                                <rect key="frame" x="0.0" y="415.5" width="314" height="114.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
-                                                <state key="normal" image="arrow.down.circle" catalog="system">
-                                                    <color key="titleColor" red="0.031372549020000001" green="0.60784313729999995" blue="0.6705882353" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="80" scale="large" weight="medium"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="backButtonPressed:" destination="vAS-eb-8mD" eventType="touchUpInside" id="zgk-Bx-hsP"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="yEn-MA-yfd" userLabel="StopPlayStack">
-                                        <rect key="frame" x="0.0" y="543" width="314" height="175"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hmk-S4-3G4" userLabel="StopButton">
-                                                <rect key="frame" x="0.0" y="30.5" width="144.5" height="114.5"/>
-                                                <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" image="stop.circle" catalog="system">
-                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="80" scale="large" weight="medium"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="stopButtonPressed:" destination="vAS-eb-8mD" eventType="touchUpInside" id="bUP-Ra-FhS"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k6T-zm-zRN" userLabel="PlayButton">
-                                                <rect key="frame" x="169.5" y="30.5" width="144.5" height="114.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                                <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" image="play.circle" catalog="system">
-                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="80" scale="large" weight="medium"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="playButtonPressed:" destination="vAS-eb-8mD" eventType="touchUpInside" id="tMB-1B-p2N"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="4u7-Pj-sOS" firstAttribute="bottom" secondItem="iqd-GI-UOf" secondAttribute="bottom" constant="50" id="JBF-nV-uWh"/>
-                            <constraint firstItem="iqd-GI-UOf" firstAttribute="leading" secondItem="4u7-Pj-sOS" secondAttribute="leading" constant="50" id="M8v-Gk-KBk"/>
-                            <constraint firstItem="iqd-GI-UOf" firstAttribute="top" secondItem="4u7-Pj-sOS" secondAttribute="top" constant="50" id="aYM-Jg-S8X"/>
-                            <constraint firstItem="4u7-Pj-sOS" firstAttribute="trailing" secondItem="iqd-GI-UOf" secondAttribute="trailing" constant="50" id="ara-2u-H8T"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="4u7-Pj-sOS"/>
                     </view>
                     <navigationItem key="navigationItem" id="sNs-Is-B3A"/>
@@ -155,12 +65,4 @@
             <point key="canvasLocation" x="1039.9553571428571" y="123.18840579710145"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="arrow.down.circle" catalog="system" width="128" height="121"/>
-        <image name="arrow.left.circle" catalog="system" width="128" height="121"/>
-        <image name="arrow.right.circle" catalog="system" width="128" height="121"/>
-        <image name="arrow.up.circle" catalog="system" width="128" height="121"/>
-        <image name="play.circle" catalog="system" width="128" height="121"/>
-        <image name="stop.circle" catalog="system" width="128" height="121"/>
-    </resources>
 </document>

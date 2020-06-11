@@ -4,7 +4,7 @@ All of the classes specific to the Finch are in the Finch folder. For most basic
 
 The app opens with a screen that enables you to choose your Finch and connect to it. You will need to do this in your app, so you probably want to leave this along (though you may want to make it more beautiful). Once you are connected, the app uses a segue to move to the MainViewController. Before it does that, it calls prepare() in the DeviceChooserViewController. This sets up the Finch so that it can be used in the MainViewController. It is VERY IMPORTANT that you set up the finch and finchManager variables for the MainViewController before this segue. Otherwise, your Finch will not work in that scene. You need to override prepare() in the same way for any other segues that are part of your program. 
 
-The MainViewController contains the variables finch: Finch?, finchManager: FinchManager?, and finchSensorState: Finch.SensorState?. finchManager is required by the Bluetooth package. The finch variable has public functions that you can use to control the lights, motors, and buzzers of the Finch. Those public functions are listed below. finchSensorState is a structure that contains the sensor information for the Finch. the variables inside that structure that contain the Finch data are described below. 
+The MainViewController is blank and ready for your to write your own Finch app!
 
 
 Public Finch Functions:
