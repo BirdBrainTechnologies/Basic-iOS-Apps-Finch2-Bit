@@ -8,6 +8,7 @@ The MainViewController contains the variables finch: Finch?, finchManager: Finch
 
 
 Public Finch Functions:
+NOTE: If you issue Bluetooth commands too close together, the last command may overwrite earlier ones. For example, if you set the color of the Finch beak and then immediately set the wheels, you may not see the effect of the beak command.
 
 Method Signature: setMove(direction: String, distance: Double, speed: Int)
 Description: Moves the Finch forward or backward for a specified distance at a specified speed. The method requires a direction ("F" for forward or "B’" for backward), a distance in centimeters, and a speed from 0-100.
