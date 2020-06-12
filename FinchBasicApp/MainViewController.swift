@@ -57,43 +57,41 @@ class MainViewController: UIViewController {
             trackingButton.setTitle("STOP TRACKING", for: .normal)
             /* We set up a timer that will call itself repeatedly and update the Finch based on whether or not the object we are tracking is currently in the scene. */
             finchTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
-                if let node = self.trackedObjectNode, let pointOfView = self.sceneView.pointOfView { // if the Finch node and the camera are defined
-                    if self.sceneView.isNode(node, insideFrustumOf: pointOfView) {  // If the tracked object is visible on camera
-                        
-                        // Turn the beak green to show that it can follow the object. This Bluetooth command many occasionally be overwritten by the motor commands.
-                        self.finch?.setBeak(red: 0, green: 100, blue: 0)
-                        
-                        // Find the position of the tracked object on the screen of the device (coordinates in pixels)
-                        let nodePositionOnScreen = self.sceneView.projectPoint(node.presentation.worldPosition)
-                        
-                        // Normalize the x-position by the width of the device. Now x = 0.5 is the center of the screen.
-                        let x = nodePositionOnScreen.x/Float(UIScreen.main.bounds.width)
-                        
-                        /* If the tracked object is on the left of the screen, Finch needs to turn left. If the tracked object is on the right of the screen, Finch needs to turn right. Within a narrow band in the center, we want the Finch to move forward. If the Finch is outside the bounds of the screen, we want to stop. */
-                        if ((x < 0) || (x > 1)) {
+                if let node = self.trackedObjectNode { // if the object node is defined
+                    if let imageAnchor = self.sceneView.anchor(for: node) as? ARImageAnchor { // if node has anchor
+                        if imageAnchor.isTracked {  // if we can currently see the image on the screen.
+                            // Turn the beak green to show that it can follow the object. This Bluetooth command many occasionally be overwritten by the motor commands.
+                            self.finch?.setBeak(red: 0, green: 100, blue: 0)
+                            
+                            // Find the position of the tracked object on the screen of the device (coordinates in pixels) and the distance of the object from the camera (z)
+                            let nodePositionOnScreen = self.sceneView.projectPoint(node.presentation.worldPosition)
+                            
+                            // Normalize the x-position by the width of the device. Now x = 0.5 is the center of the screen.
+                            let x = nodePositionOnScreen.x/Float(UIScreen.main.bounds.width)
+                            
+                            /* If the tracked object is on the left of the screen, Finch needs to turn left. If the tracked object is on the right of the screen, Finch needs to turn right. Within a narrow band in the center, we want the Finch to move forward. If the object is outside the bounds of the screen, we want to stop. */
+                            if ((x < 0) || (x > 1)) {
+                                self.finch?.stop()
+                            } else if (x < 0.45) {
+                                print("left")
+                                self.finch?.setMotors(leftSpeed: 0, rightSpeed: 20)
+                            } else if (x > 0.55) {
+                                print("right")
+                                self.finch?.setMotors(leftSpeed: 20, rightSpeed: 0)
+                            } else {
+                                self.finch?.setMotors(leftSpeed: 20, rightSpeed: 20)
+                            }
+                        } else {    // We can't see the image, so we stop and turn the beak red
+                            self.finch?.setBeak(red: 100, green: 0, blue: 0)
                             self.finch?.stop()
-                        } else if (x < 0.45) {
-                            print("left")
-                            self.finch?.setMotors(leftSpeed: 0, rightSpeed: 20)
-                        } else if (x > 0.55) {
-                            print("right")
-                            self.finch?.setMotors(leftSpeed: 20, rightSpeed: 0)
-                        } else {
-                            self.finch?.setMotors(leftSpeed: 20, rightSpeed: 20)
                         }
-                        print("x: \(x), z: \(node.presentation.worldPosition.z)")
-                    } else {
-                        // When you send Bluetooth commands very close together, the second may overwrite the first. Here, the stop command may sometimes overwrite the command to turn the beak red.
+                    } else { // Something is undefined, so we stop and turn the beak red.
                         self.finch?.setBeak(red: 100, green: 0, blue: 0)
                         self.finch?.stop()
                     }
-                } else {
-                    // When you send Bluetooth commands very close together, the second may overwrite the first. Here, the stop command may sometimes overwrite the command to turn the beak red.
-                    self.finch?.setBeak(red: 100, green: 0, blue: 0)
-                    self.finch?.stop()
                 }
             }
-        } else {
+        } else {    // turn everything off when they toggle to stop the tracking
             trackingButton.setTitle("START TRACKING", for: .normal)
             self.finch?.stopAll()
             finchTimer?.invalidate()
@@ -154,7 +152,6 @@ extension MainViewController: ARSCNViewDelegate {
         }
         return node
     }
-    
 }
 
 //MARK: - UARTDeviceManagerDelegate
