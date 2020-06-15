@@ -28,7 +28,7 @@
 		BA3C3DD7247EA85C00A45434 /* FinchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinchDelegate.swift; sourceTree = "<group>"; };
 		BA3C3DD9247EBE0D00A45434 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		BA3C3DE5247EF17D00A45434 /* FinchUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinchUtilities.swift; sourceTree = "<group>"; };
-		BA60AEB5247E8F6B0037CAFE /* FinchBasicApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinchBasicApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA60AEB5247E8F6B0037CAFE /* FinchObjectTracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinchObjectTracking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA60AEB8247E8F6B0037CAFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA60AEBC247E8F6B0037CAFE /* DeviceChooserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceChooserViewController.swift; sourceTree = "<group>"; };
 		BA60AEBF247E8F6B0037CAFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -53,7 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				BA1548AA248594D80049C40D /* Readme.md */,
-				BA60AEB7247E8F6B0037CAFE /* FinchBasicApp */,
+				BA60AEB7247E8F6B0037CAFE /* FinchObjectTracking */,
 				BA60AEB6247E8F6B0037CAFE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,12 +61,12 @@
 		BA60AEB6247E8F6B0037CAFE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BA60AEB5247E8F6B0037CAFE /* FinchBasicApp.app */,
+				BA60AEB5247E8F6B0037CAFE /* FinchObjectTracking.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BA60AEB7247E8F6B0037CAFE /* FinchBasicApp */ = {
+		BA60AEB7247E8F6B0037CAFE /* FinchObjectTracking */ = {
 			isa = PBXGroup;
 			children = (
 				BA60AECF247E90C70037CAFE /* Finch */,
@@ -78,7 +78,7 @@
 				BA60AEC6247E8F700037CAFE /* Info.plist */,
 				BA3C3DD9247EBE0D00A45434 /* MainViewController.swift */,
 			);
-			path = FinchBasicApp;
+			path = FinchObjectTracking;
 			sourceTree = "<group>";
 		};
 		BA60AECF247E90C70037CAFE /* Finch */ = {
@@ -95,9 +95,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BA60AEB4247E8F6B0037CAFE /* FinchBasicApp */ = {
+		BA60AEB4247E8F6B0037CAFE /* FinchObjectTracking */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BA60AEC9247E8F700037CAFE /* Build configuration list for PBXNativeTarget "FinchBasicApp" */;
+			buildConfigurationList = BA60AEC9247E8F700037CAFE /* Build configuration list for PBXNativeTarget "FinchObjectTracking" */;
 			buildPhases = (
 				BA60AEB1247E8F6B0037CAFE /* Sources */,
 				BA60AEB2247E8F6B0037CAFE /* Frameworks */,
@@ -107,12 +107,12 @@
 			);
 			dependencies = (
 			);
-			name = FinchBasicApp;
+			name = FinchObjectTracking;
 			packageProductDependencies = (
 				BA60AECD247E8FBA0037CAFE /* BirdbrainBLE */,
 			);
 			productName = FinchBasicApp;
-			productReference = BA60AEB5247E8F6B0037CAFE /* FinchBasicApp.app */;
+			productReference = BA60AEB5247E8F6B0037CAFE /* FinchObjectTracking.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -130,7 +130,7 @@
 					};
 				};
 			};
-			buildConfigurationList = BA60AEB0247E8F6B0037CAFE /* Build configuration list for PBXProject "FinchBasicApp" */;
+			buildConfigurationList = BA60AEB0247E8F6B0037CAFE /* Build configuration list for PBXProject "FinchObjectTracking" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -146,7 +146,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BA60AEB4247E8F6B0037CAFE /* FinchBasicApp */,
+				BA60AEB4247E8F6B0037CAFE /* FinchObjectTracking */,
 			);
 		};
 /* End PBXProject section */
@@ -252,6 +252,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = FinchObjectTracking/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -306,6 +307,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = FinchObjectTracking/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -322,7 +324,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 82SSMRBK5P;
-				INFOPLIST_FILE = FinchBasicApp/Info.plist;
+				INFOPLIST_FILE = FinchObjectTracking/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -341,7 +343,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 82SSMRBK5P;
-				INFOPLIST_FILE = FinchBasicApp/Info.plist;
+				INFOPLIST_FILE = FinchObjectTracking/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -357,7 +359,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BA60AEB0247E8F6B0037CAFE /* Build configuration list for PBXProject "FinchBasicApp" */ = {
+		BA60AEB0247E8F6B0037CAFE /* Build configuration list for PBXProject "FinchObjectTracking" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BA60AEC7247E8F700037CAFE /* Debug */,
@@ -366,7 +368,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BA60AEC9247E8F700037CAFE /* Build configuration list for PBXNativeTarget "FinchBasicApp" */ = {
+		BA60AEC9247E8F700037CAFE /* Build configuration list for PBXNativeTarget "FinchObjectTracking" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BA60AECA247E8F700037CAFE /* Debug */,
