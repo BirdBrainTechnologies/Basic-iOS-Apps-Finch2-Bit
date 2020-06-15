@@ -1,7 +1,9 @@
+/* This controls the main screen of the app that allows you to control the lights and servo motors of the Hummingbird. It also displays the Hummingbird sensor values and the connection status. */
+
 import UIKit
 import BirdbrainBLE
 
-/* Custom type to tell us whether or not the Finch is connected. */
+/* Custom type to tell us whether or not the Hummingbird is connected. */
 enum DeviceStatus {
     case connected(voltage: Float)
     case disconnected
@@ -11,9 +13,9 @@ class MainViewController: UIViewController {
     
     /* These two variables are initialized by prepare() in the previous view controller. */
     var hummingbirdManager: HummingbirdManager? // Required by BirdBrainBLE
-    var hummingbird: Hummingbird?               // Represents the Finch
+    var hummingbird: Hummingbird?               // Represents the Hummingbird
     
-    var hummingbirdSensorState: Hummingbird.SensorState?   // Contains Finch sensor data
+    var hummingbirdSensorState: Hummingbird.SensorState?   // Contains Hummingbird sensor data
     
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
@@ -23,7 +25,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set up the Finch delegates
+        // Set up the Hummingbird delegates
         self.hummingbirdManager?.delegate = self
         self.hummingbird?.delegate = self
         
@@ -33,6 +35,7 @@ class MainViewController: UIViewController {
         
     }
     
+    /* This function turns on all the single color LEDs. */
     @IBAction func lightsOn(_ sender: UIButton) {
         hummingbird?.setLED(port: 1, intensity: 100)
         hummingbird?.setLED(port: 2, intensity: 100)
@@ -47,6 +50,7 @@ class MainViewController: UIViewController {
     }
     
     
+    /* This function turns off all the single color LEDs. */
     @IBAction func lightsOff(_ sender: UIButton) {
         hummingbird?.setLED(port: 1, intensity: 0)
         hummingbird?.setLED(port: 2, intensity: 0)
@@ -59,10 +63,12 @@ class MainViewController: UIViewController {
         hummingbird?.setDisplay(pattern: pattern)
     }
     
+    /* This function plays a random note with the Hummingbird buzzer. */
     @IBAction func playSound(_ sender: UIButton) {
         hummingbird?.playNote(note: (50...100).randomElement()!, beats: 1)
     }
     
+    /* The next four functions control the positions of four servo motors based on four sliders. */
     @IBAction func servo1SliderChanged(_ sender: UISlider) {
         self.hummingbird?.setPositionServo(port: 1, angle: Int(round(sender.value)))
     }
@@ -76,7 +82,7 @@ class MainViewController: UIViewController {
         self.hummingbird?.setPositionServo(port: 4, angle: Int(round(sender.value)))
     }
     
-    /* This function changes the color of the Finch beak and tail when the user adjusts the color slider. */
+    /* This function changes the color of tri-color LEDs when the user adjusts the color slider. */
     @IBAction func
         colorSliderChanged(_ sender: UISlider) {
         
@@ -94,7 +100,6 @@ class MainViewController: UIViewController {
         }
         self.hummingbird?.setTriLED(port: 1, red: colors[0],green: colors[1], blue: colors[2])
         self.hummingbird?.setTriLED(port: 2, red: colors[0],green: colors[1], blue: colors[2])
-        self.hummingbird?.setPositionServo(port: 1, angle: Int(sender.value)*10)
     }
 
     private func updateDeviceStatus(_ deviceStatus: DeviceStatus) {
@@ -144,12 +149,12 @@ extension MainViewController: HummingbirdManagerDelegate {
     }
 }
 
-/* These are the functions you are required to implement to use the Finch. */
+/* These are the functions you are required to implement to use the Hummingbird. */
 extension MainViewController: HummingbirdDelegate {
     
-    /* This function is called when the Finch changes whether or not it is sending Bluetooth data. */
+    /* This function is called when the Hummingbird changes whether or not it is sending Bluetooth data. */
     func hummingbird(_ hummingbird: Hummingbird, isSendingStateChangeNotifications: Bool) {
-        // Handle what you want to do if the Finch stops sending notifications
+        // Handle what you want to do if the Hummingbird stops sending notifications
     }
     
     /* This is the function that is called when the Hummingbird has new sensor data. That data is in the state variable. */
@@ -161,9 +166,9 @@ extension MainViewController: HummingbirdDelegate {
         self.dialLabel.text = String(sensorState.sensor3.dial)
     }
     
-    /* This function is called when the Finch can't get the state due to an error. */
+    /* This function is called when the Hummingbird can't get the state due to an error. */
     func hummingbird(_ hummingbird: Hummingbird, errorGettingState error: Error) {
-        // Handle what you want to do if the Finch has an error getting the state
+        // Handle what you want to do if the Hummingbird has an error getting the state
     }
     
     

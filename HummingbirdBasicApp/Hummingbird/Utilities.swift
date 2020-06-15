@@ -1,4 +1,4 @@
-/* This file contains a lot of small function that are used to process the Finch data or encode values into the form that the Bluetooth protocol requires. You should not need to change anything in this file, though you can add your own utilities if you wish. */
+/* This file contains a lot of small function that are used to process the Finch or Hummingbird data or encode values into the form that the Bluetooth protocol requires. You should not need to change anything in this file, though you can add your own utilities if you wish. */
 
 import Foundation
 import GLKit

@@ -6,11 +6,11 @@ import os
 import BirdbrainBLE
 
 fileprivate struct Constants {
-    static let expectedRawStateByteCount = 14   // Number of bytes in a Finch data packet
+    static let expectedRawStateByteCount = 14   // Number of bytes in a Hummingbird data packet
     
     static let batteryVoltageConversionFactor: Float = 55.6
     
-    /* This structure contains the indices thst identify different values in a Bluetooth data packet sent by the Finch. */
+    /* This structure contains the indices thst identify different values in a Bluetooth data packet sent by the Hummingbird. */
     fileprivate struct ByteIndex {
         static let sensor1 = 0      // MSB = most significant byte
         static let sensor2 = 1      // LSB = least significant byte
@@ -29,9 +29,9 @@ public class Hummingbird: ManageableUARTDevice {
     
     static public let scanFilter: UARTDeviceScanFilter = AdvertisedNamePrefixScanFilter(prefix: "BB") // required by Bluetooth package
     
-    //MARK: - Structures for Finch Data
+    //MARK: - Structures for Hummingbird Data
     
-    /* This structure contains the raw bytes sent by the Finch over Bluetooth, along with a timestamp for the data. */
+    /* This structure contains the raw bytes sent by the Hummingbird over Bluetooth, along with a timestamp for the data. */
     public struct RawInputState {
         public let timestamp: Date
         public let data: Data
@@ -69,10 +69,10 @@ public class Hummingbird: ManageableUARTDevice {
         }
     }
     
-    /* This structure contains the processed values of the Hummingbird sensors. This is the data type that you will use in your program to hold the state of the Finch inputs. */
+    /* This structure contains the processed values of the Hummingbird sensors. This is the data type that you will use in your program to hold the state of the Hummingbird inputs. */
     public struct SensorState {
         
-        /* These functions are used to transform the raw Finch data into values the user can understand. This may involve scaling, converting the data, or manipulating bytes to deal with values that are encoded in more that one byte in the raw data. Do not change these functions unless you are very sure that you understand the Bluetooth protocol. */
+        /* These functions are used to transform the raw Hummingbird data into values the user can understand. This may involve scaling, converting the data, or manipulating bytes to deal with values that are encoded in more that one byte in the raw data. Do not change these functions unless you are very sure that you understand the Bluetooth protocol. */
         
         static fileprivate func parseBatteryVoltage(rawStateData: Data) -> Float {
             let battery: UInt8 = rawStateData[Constants.ByteIndex.battery]
@@ -159,19 +159,19 @@ public class Hummingbird: ManageableUARTDevice {
         uartDevice.advertisementSignature
     }
     
-    public var delegate: HummingbirdDelegate?     // The class using the Finch
+    public var delegate: HummingbirdDelegate?     // The class using the Hummingbird
     
     
     //MARK: - Private Properties
     
     private var uartDevice: UARTDevice      // Required by the Bluetooth package
     
-    private var outputState = OutputState()   /* Remembers what the HB lights are set to. */
+    private var outputState = OutputState()   /* Remembers what the HB outputs are set to. */
     
     /* This is the sensor data as it comes from the Hummingbird in a 14-byte packet. It has to be decoded to provide meaningful information to the user. */
     private var rawInputState: RawInputState?
     
-    /* This is a computed property that calculates the values of the Finch sensors based on the raw sensor data. */
+    /* This is a computed property that calculates the values of the Hummingbird sensors based on the raw sensor data. */
     public var inputState: Hummingbird.SensorState? {
         get {
             if let rawState = rawInputState {
@@ -227,7 +227,7 @@ public class Hummingbird: ManageableUARTDevice {
         
     }
 
-    /* This function turns off all the Finch motors, lights, and buzzer. */
+    /* This function turns off all the Hummingbird motors, lights, and buzzer. */
     private func sendStopAllCommand() {
         let command: [UInt8] = [0xCB]
 
@@ -288,19 +288,19 @@ public class Hummingbird: ManageableUARTDevice {
     }
     
     //MARK: - Public Methods
-    /* These are the functions that you will usually use to control the Finch. Most of these call a Bluetooth command that sets up the array that is sent over Bluetooth to the Finch. */
+    /* These are the functions that you will usually use to control the Hummingbird. Most of these call a Bluetooth command that sets up the array that is sent over Bluetooth to the Finch. */
     
     /* State change notifications start automatically, but you can use this if you need to restart them. */
     public func startStateChangeNotifications() -> Bool {
         return uartDevice.startStateChangeNotifications()
     }
     
-    /* Use this if you need to turn off state change notifications. This will stop the Finch getting new data, so don't do it unless you are very sure that is what you want. */
+    /* Use this if you need to turn off state change notifications. This will stop the Hummingbird getting new data, so don't do it unless you are very sure that is what you want. */
     public func stopStateChangeNotifications() -> Bool {
         return uartDevice.stopStateChangeNotifications()
     }
     
-    /* This function send a Bluetooth command to calibrate the compass. When the Finch receives this command, it will dots on the micro:bit screen as it waits for you to tilt the Finch in different directions. If the calibration is successful, you will then see a check on the micro:bit screen. Otherwise, you will see an X. */
+    /* This function send a Bluetooth command to calibrate the compass. When the Hummingbird receives this command, it will place dots on the micro:bit screen as it waits for you to tilt the Finch in different directions. If the calibration is successful, you will then see a check on the micro:bit screen. Otherwise, you will see an X. */
     public func calibrateCompass() {
         let command: [UInt8] = [0xCE, 0xFF, 0xFF, 0xFF]
         
@@ -376,7 +376,7 @@ public class Hummingbird: ManageableUARTDevice {
         setAllOutputs(buzzerPeriod: 0, buzzerDuration: 0)
     }
     
-    /* This function plays a note on the Finch buzzer. We do not save this to the output state of the Finch, because we want it to play just once. Notes are MIDI notes (32-135) and beats must be between 0-16. Each beat is 1 second. */
+    /* This function plays a note on the Hummingbird buzzer. We do not save this to the output state of the Finch, because we want it to play just once. Notes are MIDI notes (32-135) and beats must be between 0-16. Each beat is 1 second. */
     public func playNote(note: Int, beats: Double) {
         let noteInBounds = clampToBounds(num: note, minBound: 32, maxBound: 135)
         let beatsInBounds = clampToBounds(num: beats, minBound: 0, maxBound: 16)
@@ -391,7 +391,7 @@ public class Hummingbird: ManageableUARTDevice {
 
     }
     
-    /* This function can be used to print a string on the Finch micro:bit. This function can only print strings up to 18 characters long. */
+    /* This function can be used to print a string on the Hummingbird micro:bit. This function can only print strings up to 18 characters long. */
     public func printString(_ stringToPrint: String) {
         sendPrintCommand(stringToPrint)
     }
@@ -413,7 +413,7 @@ public class Hummingbird: ManageableUARTDevice {
         }
     }
 
-    /* This function turns off all the Finch motors, lights, and buzzer. */
+    /* This function turns off all the Hummingbird motors, lights, and buzzer. */
     public func stopAll() {
         outputState = OutputState()
         sendStopAllCommand()
@@ -422,7 +422,7 @@ public class Hummingbird: ManageableUARTDevice {
 }
 
 // MARK: - UARTDeviceDelegate
-/* These are the function the Finch class must implement to be a UARTDeviceDelegate. You will not need to change these for the vast majority of project. */
+/* These are the functions the Hummingbird class must implement to be a UARTDeviceDelegate. You will not need to change these for the vast majority of project. */
 extension Hummingbird: UARTDeviceDelegate {
     
     /* This function determines what happens when the Bluetooth device changes whether or not it is sending notifications. */
@@ -435,13 +435,13 @@ extension Hummingbird: UARTDeviceDelegate {
         if let rawState = RawInputState(data: stateData) {
             self.rawInputState = rawState
             
-            /* Every time we get a new Bluetooth notification with sensor data, we create a new value of InputState() and pass it to the Finch delegate. */
+            /* Every time we get a new Bluetooth notification with sensor data, we create a new value of InputState() and pass it to the Hummingbird delegate. */
             if let delegate = delegate {
                 delegate.hummingbird(self, sensorState: SensorState(rawState: rawState))
                 
             }
         } else {
-            /* If we have an error, pass that to the Finch delegate. */
+            /* If we have an error, pass that to the Hummingbird delegate. */
             self.rawInputState?.isStale = true
             delegate?.hummingbird(self, errorGettingState: "invalid raw state" as! Error)
         }

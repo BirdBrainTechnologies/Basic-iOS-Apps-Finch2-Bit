@@ -1,8 +1,8 @@
-/* This is the view controller that controls the initial screen of the app (Device Chooser Scene), where you choose your Finch. It displays a lit of Bluetooth devices, and when you tap one, it connects and then moves on to the Main View Controller and its corresponding screen. */
+/* This is the view controller that controls the initial screen of the app (Device Chooser Scene), where you choose your Hummingbird. It displays a list of Bluetooth devices, and when you tap one, it connects and then moves on to the Main View Controller and its corresponding screen. */
 import UIKit
 import BirdbrainBLE
 
-/* Structure that represents the available Finches. */
+/* Structure that represents the available Hummingbirds. */
 fileprivate struct AvailableDevice {
     let uuid: UUID
     let advertisementSignature: AdvertisementSignature
@@ -17,7 +17,7 @@ fileprivate struct AvailableDevice {
 
 class DeviceChooserViewController: UIViewController {
     
-    /* To use the BirdBrainBLE package with the Finch, you need a class that represents the Finch and a manager for that class. */
+    /* To use the BirdBrainBLE package with the Hummingbird, you need a class that represents the Hummingbird and a manager for that class. */
     private let hummingbirdManager = HummingbirdManager(scanFilter: Hummingbird.scanFilter)
     private var hummingbird: Hummingbird?
     
@@ -43,7 +43,7 @@ class DeviceChooserViewController: UIViewController {
         }
     }
     
-    /* This function is called just before the segue to the Main View Controller Scene. It is VERY IMPORTANT that you set up the finch and finchManager variables for the MainViewController before this segue. Otherwise, your Finch will not work in that scene. You need to override prepare() in the same way for any other segues that are part of your program. */
+    /* This function is called just before the segue to the Main View Controller Scene. It is VERY IMPORTANT that you set up the hummingbird and hummingbirdManager variables for the MainViewController before this segue. Otherwise, your Hummingbird will not work in that scene. You need to override prepare() in the same way for any other segues that are part of your program. */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToMain" {
             let destinationVC = segue.destination as! MainViewController
