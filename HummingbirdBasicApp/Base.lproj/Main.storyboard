@@ -58,10 +58,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="ELS-sJ-E8d" userLabel="Outputs">
-                                <rect key="frame" x="783.5" y="50" width="532.5" height="924"/>
+                                <rect key="frame" x="715.5" y="50" width="600.5" height="924"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="d3q-6O-FeD">
-                                        <rect key="frame" x="0.0" y="0.0" width="532.5" height="143"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600.5" height="143"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Servo 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GO2-tB-qpO">
                                                 <rect key="frame" x="0.0" y="0.0" width="56" height="143"/>
@@ -69,8 +69,8 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="180" translatesAutoresizingMaskIntoConstraints="NO" id="ise-9o-gR5">
-                                                <rect key="frame" x="59" y="0.0" width="475.5" height="144"/>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="20" minValue="0.0" maxValue="180" translatesAutoresizingMaskIntoConstraints="NO" id="ise-9o-gR5">
+                                                <rect key="frame" x="59" y="0.0" width="543.5" height="144"/>
                                                 <connections>
                                                     <action selector="servo1SliderChanged:" destination="HBT-aC-bie" eventType="valueChanged" id="1Jh-EI-dsm"/>
                                                 </connections>
@@ -78,7 +78,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="SV8-vF-YKs">
-                                        <rect key="frame" x="0.0" y="156" width="532.5" height="143.5"/>
+                                        <rect key="frame" x="0.0" y="156" width="600.5" height="143.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Servo 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXe-5F-giV">
                                                 <rect key="frame" x="0.0" y="0.0" width="58.5" height="143.5"/>
@@ -86,8 +86,8 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="180" translatesAutoresizingMaskIntoConstraints="NO" id="gVB-Ek-K7f">
-                                                <rect key="frame" x="61.5" y="0.0" width="473" height="144.5"/>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="60" minValue="0.0" maxValue="180" translatesAutoresizingMaskIntoConstraints="NO" id="gVB-Ek-K7f">
+                                                <rect key="frame" x="61.5" y="0.0" width="541" height="144.5"/>
                                                 <connections>
                                                     <action selector="servo2SliderChanged:" destination="HBT-aC-bie" eventType="valueChanged" id="hzR-Qa-1aY"/>
                                                 </connections>
@@ -95,7 +95,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="dd6-1k-KuS">
-                                        <rect key="frame" x="0.0" y="312.5" width="532.5" height="143"/>
+                                        <rect key="frame" x="0.0" y="312.5" width="600.5" height="143"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Servo 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kFB-3d-2Vo">
                                                 <rect key="frame" x="0.0" y="0.0" width="59" height="143"/>
@@ -103,8 +103,8 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="180" translatesAutoresizingMaskIntoConstraints="NO" id="fz7-x5-1T2">
-                                                <rect key="frame" x="62" y="0.0" width="472.5" height="144"/>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="60" minValue="0.0" maxValue="180" translatesAutoresizingMaskIntoConstraints="NO" id="fz7-x5-1T2">
+                                                <rect key="frame" x="62" y="0.0" width="540.5" height="144"/>
                                                 <connections>
                                                     <action selector="servo3SliderChanged:" destination="HBT-aC-bie" eventType="valueChanged" id="O5n-DT-XO6"/>
                                                 </connections>
@@ -112,7 +112,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="m0I-EZ-ABX">
-                                        <rect key="frame" x="0.0" y="468.5" width="532.5" height="143"/>
+                                        <rect key="frame" x="0.0" y="468.5" width="600.5" height="143"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Servo 4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VzL-jH-EKP">
                                                 <rect key="frame" x="0.0" y="0.0" width="59" height="143"/>
@@ -120,8 +120,8 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="180" translatesAutoresizingMaskIntoConstraints="NO" id="znf-q4-JAq">
-                                                <rect key="frame" x="62" y="0.0" width="472.5" height="144"/>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="60" minValue="0.0" maxValue="180" translatesAutoresizingMaskIntoConstraints="NO" id="znf-q4-JAq">
+                                                <rect key="frame" x="62" y="0.0" width="540.5" height="144"/>
                                                 <connections>
                                                     <action selector="servo4SliderChanged:" destination="HBT-aC-bie" eventType="valueChanged" id="ote-6d-nUX"/>
                                                 </connections>
@@ -129,24 +129,24 @@
                                         </subviews>
                                     </stackView>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="7.5" minValue="0.0" maxValue="8" translatesAutoresizingMaskIntoConstraints="NO" id="1io-BX-7sR">
-                                        <rect key="frame" x="-2" y="624.5" width="536.5" height="144.5"/>
+                                        <rect key="frame" x="-2" y="624.5" width="604.5" height="144.5"/>
                                         <connections>
                                             <action selector="colorSliderChanged:" destination="HBT-aC-bie" eventType="valueChanged" id="pbS-Bj-ivK"/>
                                         </connections>
                                     </slider>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="colorbar" translatesAutoresizingMaskIntoConstraints="NO" id="oTR-tS-qKG">
-                                        <rect key="frame" x="0.0" y="781" width="532.5" height="143"/>
+                                        <rect key="frame" x="0.0" y="781" width="600.5" height="143"/>
                                     </imageView>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="s4v-Ux-cg3" userLabel="Left">
-                                <rect key="frame" x="50" y="0.0" width="683.5" height="1024"/>
+                                <rect key="frame" x="50" y="0.0" width="615.5" height="1024"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="k9J-cS-d2A">
-                                        <rect key="frame" x="0.0" y="0.0" width="683.5" height="308"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="615.5" height="308"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AvE-wr-0fL">
-                                                <rect key="frame" x="0.0" y="0.0" width="332" height="308"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="298" height="308"/>
                                                 <state key="normal" image="lightbulb" catalog="system">
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="48" scale="large" weight="medium"/>
                                                 </state>
@@ -155,7 +155,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bsb-Cv-wOm">
-                                                <rect key="frame" x="352" y="0.0" width="331.5" height="308"/>
+                                                <rect key="frame" x="318" y="0.0" width="297.5" height="308"/>
                                                 <state key="normal" image="lightbulb.slash" catalog="system">
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="48" scale="large" weight="medium"/>
                                                 </state>
@@ -166,7 +166,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Abg-J1-zHB">
-                                        <rect key="frame" x="290" y="358" width="104" height="308"/>
+                                        <rect key="frame" x="256" y="358" width="104" height="308"/>
                                         <state key="normal" title="Button" image="music.note" catalog="system">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="48" scale="large" weight="medium"/>
                                         </state>
@@ -175,7 +175,7 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="RSx-ib-x1K" userLabel="Sensors">
-                                        <rect key="frame" x="199" y="716" width="286" height="308"/>
+                                        <rect key="frame" x="165" y="716" width="286" height="308"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Yl5-PG-Aee">
                                                 <rect key="frame" x="0.0" y="84" width="151.5" height="140"/>

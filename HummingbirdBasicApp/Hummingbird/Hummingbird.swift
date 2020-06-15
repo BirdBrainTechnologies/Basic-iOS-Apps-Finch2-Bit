@@ -8,7 +8,7 @@ import BirdbrainBLE
 fileprivate struct Constants {
     static let expectedRawStateByteCount = 14   // Number of bytes in a Hummingbird data packet
     
-    static let batteryVoltageConversionFactor: Float = 55.6
+    static let batteryVoltageConversionFactor: Float = 0.0406
     
     /* This structure contains the indices thst identify different values in a Bluetooth data packet sent by the Hummingbird. */
     fileprivate struct ByteIndex {
@@ -76,7 +76,7 @@ public class Hummingbird: ManageableUARTDevice {
         
         static fileprivate func parseBatteryVoltage(rawStateData: Data) -> Float {
             let battery: UInt8 = rawStateData[Constants.ByteIndex.battery]
-            return Float(battery) //Float(battery) / Constants.batteryVoltageConversionFactor
+            return Float(battery)*Constants.batteryVoltageConversionFactor
         }
         
         static fileprivate func parseAccelerationMagnetometerCompass(rawStateData: Data) -> (Array<Double>, Array<Double>, Int?) {
