@@ -17,10 +17,6 @@ class MainViewController: UIViewController {
     
     var hummingbirdSensorState: Hummingbird.SensorState?   // Contains Hummingbird sensor data
     
-    @IBOutlet weak var statusLabel: UILabel!
-    @IBOutlet weak var distanceLabel: UILabel!
-    @IBOutlet weak var lightLabel: UILabel!
-    @IBOutlet weak var dialLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,82 +31,6 @@ class MainViewController: UIViewController {
         
     }
     
-    /* This function turns on all the single color LEDs. */
-    @IBAction func lightsOn(_ sender: UIButton) {
-        hummingbird?.setLED(port: 1, intensity: 100)
-        hummingbird?.setLED(port: 2, intensity: 100)
-        hummingbird?.setLED(port: 3, intensity: 100)
-        
-        var pattern: [Int] = []
-        for _ in 0..<25 {
-            pattern.append([0,1].randomElement()!)
-        }
-        print(pattern)
-        hummingbird?.setDisplay(pattern: pattern)
-    }
-    
-    
-    /* This function turns off all the single color LEDs. */
-    @IBAction func lightsOff(_ sender: UIButton) {
-        hummingbird?.setLED(port: 1, intensity: 0)
-        hummingbird?.setLED(port: 2, intensity: 0)
-        hummingbird?.setLED(port: 3, intensity: 0)
-        
-        var pattern: [Int] = []
-        for _ in 0..<25 {
-            pattern.append(0)
-        }
-        hummingbird?.setDisplay(pattern: pattern)
-    }
-    
-    /* This function plays a random note with the Hummingbird buzzer. */
-    @IBAction func playSound(_ sender: UIButton) {
-        hummingbird?.playNote(note: (50...100).randomElement()!, beats: 1)
-    }
-    
-    /* The next four functions control the positions of four servo motors based on four sliders. */
-    @IBAction func servo1SliderChanged(_ sender: UISlider) {
-        self.hummingbird?.setPositionServo(port: 1, angle: Int(round(sender.value)))
-    }
-    @IBAction func servo2SliderChanged(_ sender: UISlider) {
-        self.hummingbird?.setPositionServo(port: 2, angle: Int(round(sender.value)))
-    }
-    @IBAction func servo3SliderChanged(_ sender: UISlider) {
-        self.hummingbird?.setPositionServo(port: 3, angle: Int(round(sender.value)))
-    }
-    @IBAction func servo4SliderChanged(_ sender: UISlider) {
-        self.hummingbird?.setPositionServo(port: 4, angle: Int(round(sender.value)))
-    }
-    
-    /* This function changes the color of tri-color LEDs when the user adjusts the color slider. */
-    @IBAction func
-        colorSliderChanged(_ sender: UISlider) {
-        
-        var colors: Array<Int>
-        
-        switch (sender.value) {
-        case 0..<1: colors = [100,100,100]
-        case 1..<2: colors = [100,100,0]
-        case 2..<3: colors = [0,100,100]
-        case 3..<4: colors = [0,100,0]
-        case 4..<5: colors = [100,0,100]
-        case 5..<6: colors = [100,0,0]
-        case 6..<7: colors = [0,0,100]
-        default: colors = [0,0,0]
-        }
-        self.hummingbird?.setTriLED(port: 1, red: colors[0],green: colors[1], blue: colors[2])
-        self.hummingbird?.setTriLED(port: 2, red: colors[0],green: colors[1], blue: colors[2])
-    }
-
-    private func updateDeviceStatus(_ deviceStatus: DeviceStatus) {
-        // TODO: show/hide device status view as appropriate, display icons/button, etc.
-        switch deviceStatus {
-        case .connected:
-            self.statusLabel.text = "Connected"
-        case .disconnected:
-            self.statusLabel.text = "Disconnected"
-        }
-    }
 }
 
 //MARK: - UARTDeviceManagerDelegate
@@ -160,10 +80,7 @@ extension MainViewController: HummingbirdDelegate {
     /* This is the function that is called when the Hummingbird has new sensor data. That data is in the state variable. */
     func hummingbird(_ hummingbird: Hummingbird, sensorState: Hummingbird.SensorState) {
         self.hummingbirdSensorState = sensorState
-        self.distanceLabel.text = String(sensorState.sensor1.distance) + " cm"
-
-        self.lightLabel.text = String(sensorState.sensor2.light)
-        self.dialLabel.text = String(sensorState.sensor3.dial)
+        // Do whatever you want with the sensor data here
     }
     
     /* This function is called when the Hummingbird can't get the state due to an error. */
