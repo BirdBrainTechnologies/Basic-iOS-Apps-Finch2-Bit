@@ -2,7 +2,7 @@ This is a basic Bluetooth application using the Finch Robot 2.0. You can use it 
 
 All of the classes specific to the Finch are in the Finch folder. For most basic apps, you will not need to change anything in this folder. 
 
-The app opens with a screen that enables you to choose your Finch and connect to it. You will need to do this in your app, so you probably want to leave this along (though you may want to make it more beautiful). Once you are connected, the app uses a segue to move to the MainViewController. Before it does that, it calls prepare() in the DeviceChooserViewController. This sets up the Finch so that it can be used in the MainViewController. It is VERY IMPORTANT that you set up the finch and finchManager variables for the MainViewController before this segue. Otherwise, your Finch will not work in that scene. You need to override prepare() in the same way for any other segues that are part of your program. 
+The app opens with a screen that enables you to choose your Finch and connect to it. You will need to do this in your app, so you probably want to leave this alone (though you may want to make it more beautiful). Once you are connected, the app uses a segue to move to the MainViewController. Before it does that, it calls prepare() in the DeviceChooserViewController. This sets up the Finch so that it can be used in the MainViewController. It is VERY IMPORTANT that you set up the finch and finchManager variables for the MainViewController before this segue. Otherwise, your Finch will not work in that scene. You need to override prepare() in the same way for any other segues that are part of your program. 
 
 The MainViewController demonstrates how you can use ARkit with the Finch. The app uses ARKit to track an object that is defined in the Images folder in Assets.xcassets. Here, that obect is a book cover named monster. ARKit and SceneKit can be used to tell you where that object is located within the view of the camera, and then the Finch moves to follow the object.
 
@@ -86,7 +86,7 @@ Example: let correctedLightSensors = finch.correctLightSensorValues()
 
 Method Signature: calibrateCompass()
 
-Description: This function send a Bluetooth command to calibrate the compass. When the Finch receives this command, it will dots on the micro:bit screen as it waits for you to tilt the Finch in different directions. If the calibration is successful, you will then see a check on the micro:bit screen. Otherwise, you will see an X.
+Description: This function send a Bluetooth command to calibrate the compass. When the Finch receives this command, it will place dots on the micro:bit screen as it waits for you to tilt the Finch in different directions. If the calibration is successful, you will then see a check on the micro:bit screen. Otherwise, you will see an X.
 
 Example: finch.calibrateCompass()
 
