@@ -6,6 +6,7 @@ The app opens with a screen that enables you to choose your Finch and connect to
 
 The MainViewController contains the variables finch: Finch?, finchManager: FinchManager?, and finchSensorState: Finch.SensorState?. finchManager is required by the Bluetooth package. The finch variable has public functions that you can use to control the lights, motors, and buzzers of the Finch. Those public functions are listed below. finchSensorState is a structure that contains the sensor information for the Finch. the variables inside that structure that contain the Finch data are described below. 
 
+The MainViewController screen demonstrates how you can use buttons and sliders to control the Finch outputs. It also displays the values of the Finch sensors on the screen.
 
 Public Finch Functions:
 
