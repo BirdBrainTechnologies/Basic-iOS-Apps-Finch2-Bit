@@ -28,7 +28,7 @@
 		BA1548AA248594D80049C40D /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
 		BA3C3DD9247EBE0D00A45434 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		BA3C3DE5247EF17D00A45434 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		BA60AEB5247E8F6B0037CAFE /* HummingbirdBasicApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HummingbirdBasicApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA60AEB5247E8F6B0037CAFE /* HummingbirdBlankApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HummingbirdBlankApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA60AEB8247E8F6B0037CAFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA60AEBC247E8F6B0037CAFE /* DeviceChooserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceChooserViewController.swift; sourceTree = "<group>"; };
 		BA60AEBF247E8F6B0037CAFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -53,7 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				BA1548AA248594D80049C40D /* Readme.md */,
-				BA60AEB7247E8F6B0037CAFE /* HummingbirdBasicApp */,
+				BA60AEB7247E8F6B0037CAFE /* HummingbirdBlankApp */,
 				BA60AEB6247E8F6B0037CAFE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,12 +61,12 @@
 		BA60AEB6247E8F6B0037CAFE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BA60AEB5247E8F6B0037CAFE /* HummingbirdBasicApp.app */,
+				BA60AEB5247E8F6B0037CAFE /* HummingbirdBlankApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BA60AEB7247E8F6B0037CAFE /* HummingbirdBasicApp */ = {
+		BA60AEB7247E8F6B0037CAFE /* HummingbirdBlankApp */ = {
 			isa = PBXGroup;
 			children = (
 				BA60AECF247E90C70037CAFE /* Hummingbird */,
@@ -78,7 +78,7 @@
 				BA60AEC6247E8F700037CAFE /* Info.plist */,
 				BA3C3DD9247EBE0D00A45434 /* MainViewController.swift */,
 			);
-			path = HummingbirdBasicApp;
+			path = HummingbirdBlankApp;
 			sourceTree = "<group>";
 		};
 		BA60AECF247E90C70037CAFE /* Hummingbird */ = {
@@ -95,9 +95,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BA60AEB4247E8F6B0037CAFE /* HummingbirdBasicApp */ = {
+		BA60AEB4247E8F6B0037CAFE /* HummingbirdBlankApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BA60AEC9247E8F700037CAFE /* Build configuration list for PBXNativeTarget "HummingbirdBasicApp" */;
+			buildConfigurationList = BA60AEC9247E8F700037CAFE /* Build configuration list for PBXNativeTarget "HummingbirdBlankApp" */;
 			buildPhases = (
 				BA60AEB1247E8F6B0037CAFE /* Sources */,
 				BA60AEB2247E8F6B0037CAFE /* Frameworks */,
@@ -107,12 +107,12 @@
 			);
 			dependencies = (
 			);
-			name = HummingbirdBasicApp;
+			name = HummingbirdBlankApp;
 			packageProductDependencies = (
 				BA60AECD247E8FBA0037CAFE /* BirdbrainBLE */,
 			);
 			productName = FinchBasicApp;
-			productReference = BA60AEB5247E8F6B0037CAFE /* HummingbirdBasicApp.app */;
+			productReference = BA60AEB5247E8F6B0037CAFE /* HummingbirdBlankApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -130,7 +130,7 @@
 					};
 				};
 			};
-			buildConfigurationList = BA60AEB0247E8F6B0037CAFE /* Build configuration list for PBXProject "HummingbirdBasicApp" */;
+			buildConfigurationList = BA60AEB0247E8F6B0037CAFE /* Build configuration list for PBXProject "HummingbirdBlankApp" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -146,7 +146,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BA60AEB4247E8F6B0037CAFE /* HummingbirdBasicApp */,
+				BA60AEB4247E8F6B0037CAFE /* HummingbirdBlankApp */,
 			);
 		};
 /* End PBXProject section */
@@ -322,14 +322,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 82SSMRBK5P;
-				INFOPLIST_FILE = HummingbirdBasicApp/Info.plist;
+				INFOPLIST_FILE = HummingbirdBlankApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = HummingbirdBasicApp;
-				PRODUCT_NAME = HummingbirdBasicApp;
+				PRODUCT_BUNDLE_IDENTIFIER = HummingbirdBlankApp;
+				PRODUCT_NAME = HummingbirdBlankApp;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -341,14 +341,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 82SSMRBK5P;
-				INFOPLIST_FILE = HummingbirdBasicApp/Info.plist;
+				INFOPLIST_FILE = HummingbirdBlankApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = HummingbirdBasicApp;
-				PRODUCT_NAME = HummingbirdBasicApp;
+				PRODUCT_BUNDLE_IDENTIFIER = HummingbirdBlankApp;
+				PRODUCT_NAME = HummingbirdBlankApp;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -357,7 +357,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BA60AEB0247E8F6B0037CAFE /* Build configuration list for PBXProject "HummingbirdBasicApp" */ = {
+		BA60AEB0247E8F6B0037CAFE /* Build configuration list for PBXProject "HummingbirdBlankApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BA60AEC7247E8F700037CAFE /* Debug */,
@@ -366,7 +366,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BA60AEC9247E8F700037CAFE /* Build configuration list for PBXNativeTarget "HummingbirdBasicApp" */ = {
+		BA60AEC9247E8F700037CAFE /* Build configuration list for PBXNativeTarget "HummingbirdBlankApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BA60AECA247E8F700037CAFE /* Debug */,
