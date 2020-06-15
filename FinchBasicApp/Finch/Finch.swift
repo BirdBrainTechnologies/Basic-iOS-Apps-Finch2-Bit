@@ -378,7 +378,7 @@ public class Finch: ManageableUARTDevice {
         return uartDevice.stopStateChangeNotifications()
     }
     
-    /* This function send a Bluetooth command to calibrate the compass. When the Finch receives this command, it will dots on the micro:bit screen as it waits for you to tilt the Finch in different directions. If the calibration is successful, you will then see a check on the micro:bit screen. Otherwise, you will see an X. */
+    /* This function send a Bluetooth command to calibrate the compass. When the Finch receives this command, it will place dots on the micro:bit screen as it waits for you to tilt the Finch in different directions. If the calibration is successful, you will then see a check on the micro:bit screen. Otherwise, you will see an X. */
     public func calibrateCompass() {
         let command: [UInt8] = [0xCE, 0xFF, 0xFF, 0xFF]
         

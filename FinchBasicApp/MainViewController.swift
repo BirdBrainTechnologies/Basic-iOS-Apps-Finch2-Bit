@@ -1,3 +1,4 @@
+/* This controls the main screen of the app that allows you to control the lights and motors of the Finch. It also displays the Finch sensor values and the connection status. */
 import UIKit
 import BirdbrainBLE
 
