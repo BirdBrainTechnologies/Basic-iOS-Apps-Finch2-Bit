@@ -11,7 +11,7 @@
         <!--Device Chooser Scene-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Device Chooser Scene" id="BYZ-38-t0r" customClass="DeviceChooserViewController" customModule="FinchBasicApp" sceneMemberID="viewController">
+                <viewController title="Device Chooser Scene" id="BYZ-38-t0r" customClass="DeviceChooserViewController" customModule="FinchBeebot" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -52,7 +52,7 @@
         <!--Main View Controller-->
         <scene sceneID="Ru8-Ly-D52">
             <objects>
-                <viewController title="Main View Controller" modalPresentationStyle="fullScreen" id="vAS-eb-8mD" customClass="MainViewController" customModule="FinchBasicApp" sceneMemberID="viewController">
+                <viewController title="Main View Controller" modalPresentationStyle="fullScreen" id="vAS-eb-8mD" customClass="MainViewController" customModule="FinchBeebot" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0cM-Td-Kof">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
