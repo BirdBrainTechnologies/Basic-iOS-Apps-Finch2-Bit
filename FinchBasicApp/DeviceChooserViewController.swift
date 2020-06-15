@@ -18,8 +18,8 @@ fileprivate struct AvailableDevice {
 class DeviceChooserViewController: UIViewController {
     
     /* To use the BirdBrainBLE package with the Finch, you need a class that represents the Finch and a manager for that class. */
-    private let finchManager = FinchManager(scanFilter: Finch.scanFilter)
-    private var finch: Finch?
+    private let hummingbirdManager = HummingbirdManager(scanFilter: Hummingbird.scanFilter)
+    private var hummingbird: Hummingbird?
     
     
     @IBOutlet weak var availableDevicesTable: UITableView!
@@ -31,7 +31,7 @@ class DeviceChooserViewController: UIViewController {
         super.viewDidLoad()
         
         // Set the delegates
-        finchManager.delegate = self
+        hummingbirdManager.delegate = self
         availableDevicesTable.dataSource = self
         availableDevicesTable.delegate = self
     }
@@ -47,8 +47,8 @@ class DeviceChooserViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToMain" {
             let destinationVC = segue.destination as! MainViewController
-            destinationVC.finch = finch
-            destinationVC.finchManager = finchManager
+            destinationVC.hummingbird = hummingbird
+            destinationVC.hummingbirdManager = hummingbirdManager
         }
     }
 }
@@ -58,8 +58,8 @@ class DeviceChooserViewController: UIViewController {
 extension DeviceChooserViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("DeviceChooserViewController: UITableViewDelegate.didSelectRowAt(\(indexPath.row))")
-        let _ = finchManager.stopScanning()
-        let _ = finchManager.connectToDevice(havingUUID:    availableDevices[indexPath.row].uuid)   // Connect to Finch
+        let _ = hummingbirdManager.stopScanning()
+        let _ = hummingbirdManager.connectToDevice(havingUUID:    availableDevices[indexPath.row].uuid)   // Connect to Finch
     }
 }
 
@@ -95,7 +95,7 @@ extension DeviceChooserViewController: UARTDeviceManagerDelegate {
     func didUpdateState(to state: UARTDeviceManagerState) {
         print("UARTDeviceManagerDelegate.didUpdateState: \(state)")
         if (state == .enabled) {
-            if finchManager.startScanning() {
+            if hummingbirdManager.startScanning() {
                 print("Scanning...")
             }
             else {
@@ -125,7 +125,7 @@ extension DeviceChooserViewController: UARTDeviceManagerDelegate {
     /* This function is called when we connect to a device. It triggers the segue to the Main View Controller. */
     func didConnectTo(uuid: UUID) {
         print("didConnectTo(\(uuid))")
-        finch = finchManager.getDevice(uuid: uuid)
+        hummingbird = hummingbirdManager.getDevice(uuid: uuid)
         performSegue(withIdentifier: "goToMain", sender: self)
     }
     

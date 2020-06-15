@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		316A71BB2493D8E6001245C5 /* Hummingbird.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316A71BA2493D8E6001245C5 /* Hummingbird.swift */; };
+		316A71BD2493D8F4001245C5 /* HummingbirdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316A71BC2493D8F4001245C5 /* HummingbirdManager.swift */; };
+		316A71BF2493D903001245C5 /* HummingbirdDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316A71BE2493D903001245C5 /* HummingbirdDelegate.swift */; };
 		BA1548AB248594D80049C40D /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = BA1548AA248594D80049C40D /* Readme.md */; };
-		BA3C3DD4247EA5F100A45434 /* Finch.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C3DD3247EA5F100A45434 /* Finch.swift */; };
-		BA3C3DD6247EA61400A45434 /* FinchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C3DD5247EA61400A45434 /* FinchManager.swift */; };
-		BA3C3DD8247EA85C00A45434 /* FinchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C3DD7247EA85C00A45434 /* FinchDelegate.swift */; };
 		BA3C3DDA247EBE0D00A45434 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C3DD9247EBE0D00A45434 /* MainViewController.swift */; };
-		BA3C3DE6247EF17D00A45434 /* FinchUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C3DE5247EF17D00A45434 /* FinchUtilities.swift */; };
+		BA3C3DE6247EF17D00A45434 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C3DE5247EF17D00A45434 /* Utilities.swift */; };
 		BA60AEB9247E8F6B0037CAFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA60AEB8247E8F6B0037CAFE /* AppDelegate.swift */; };
 		BA60AEBD247E8F6B0037CAFE /* DeviceChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA60AEBC247E8F6B0037CAFE /* DeviceChooserViewController.swift */; };
 		BA60AEC0247E8F6B0037CAFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA60AEBE247E8F6B0037CAFE /* Main.storyboard */; };
@@ -22,12 +22,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		316A71BA2493D8E6001245C5 /* Hummingbird.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hummingbird.swift; sourceTree = "<group>"; };
+		316A71BC2493D8F4001245C5 /* HummingbirdManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HummingbirdManager.swift; sourceTree = "<group>"; };
+		316A71BE2493D903001245C5 /* HummingbirdDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HummingbirdDelegate.swift; sourceTree = "<group>"; };
 		BA1548AA248594D80049C40D /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
-		BA3C3DD3247EA5F100A45434 /* Finch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Finch.swift; sourceTree = "<group>"; };
-		BA3C3DD5247EA61400A45434 /* FinchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinchManager.swift; sourceTree = "<group>"; };
-		BA3C3DD7247EA85C00A45434 /* FinchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinchDelegate.swift; sourceTree = "<group>"; };
 		BA3C3DD9247EBE0D00A45434 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		BA3C3DE5247EF17D00A45434 /* FinchUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinchUtilities.swift; sourceTree = "<group>"; };
+		BA3C3DE5247EF17D00A45434 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		BA60AEB5247E8F6B0037CAFE /* FinchBasicApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinchBasicApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA60AEB8247E8F6B0037CAFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA60AEBC247E8F6B0037CAFE /* DeviceChooserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceChooserViewController.swift; sourceTree = "<group>"; };
@@ -69,7 +69,7 @@
 		BA60AEB7247E8F6B0037CAFE /* FinchBasicApp */ = {
 			isa = PBXGroup;
 			children = (
-				BA60AECF247E90C70037CAFE /* Finch */,
+				BA60AECF247E90C70037CAFE /* Hummingbird */,
 				BA60AEB8247E8F6B0037CAFE /* AppDelegate.swift */,
 				BA60AEBC247E8F6B0037CAFE /* DeviceChooserViewController.swift */,
 				BA60AEBE247E8F6B0037CAFE /* Main.storyboard */,
@@ -81,15 +81,15 @@
 			path = FinchBasicApp;
 			sourceTree = "<group>";
 		};
-		BA60AECF247E90C70037CAFE /* Finch */ = {
+		BA60AECF247E90C70037CAFE /* Hummingbird */ = {
 			isa = PBXGroup;
 			children = (
-				BA3C3DD3247EA5F100A45434 /* Finch.swift */,
-				BA3C3DD5247EA61400A45434 /* FinchManager.swift */,
-				BA3C3DD7247EA85C00A45434 /* FinchDelegate.swift */,
-				BA3C3DE5247EF17D00A45434 /* FinchUtilities.swift */,
+				BA3C3DE5247EF17D00A45434 /* Utilities.swift */,
+				316A71BA2493D8E6001245C5 /* Hummingbird.swift */,
+				316A71BC2493D8F4001245C5 /* HummingbirdManager.swift */,
+				316A71BE2493D903001245C5 /* HummingbirdDelegate.swift */,
 			);
-			path = Finch;
+			path = Hummingbird;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,7 +130,7 @@
 					};
 				};
 			};
-			buildConfigurationList = BA60AEB0247E8F6B0037CAFE /* Build configuration list for PBXProject "FinchBasicApp" */;
+			buildConfigurationList = BA60AEB0247E8F6B0037CAFE /* Build configuration list for PBXProject "HummingbirdBasicApp" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -170,13 +170,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA3C3DD6247EA61400A45434 /* FinchManager.swift in Sources */,
-				BA3C3DD8247EA85C00A45434 /* FinchDelegate.swift in Sources */,
+				316A71BB2493D8E6001245C5 /* Hummingbird.swift in Sources */,
+				316A71BF2493D903001245C5 /* HummingbirdDelegate.swift in Sources */,
 				BA60AEBD247E8F6B0037CAFE /* DeviceChooserViewController.swift in Sources */,
-				BA3C3DE6247EF17D00A45434 /* FinchUtilities.swift in Sources */,
+				BA3C3DE6247EF17D00A45434 /* Utilities.swift in Sources */,
+				316A71BD2493D8F4001245C5 /* HummingbirdManager.swift in Sources */,
 				BA3C3DDA247EBE0D00A45434 /* MainViewController.swift in Sources */,
 				BA60AEB9247E8F6B0037CAFE /* AppDelegate.swift in Sources */,
-				BA3C3DD4247EA5F100A45434 /* Finch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,8 +328,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.birdbrain.FinchBasicApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = FinchBasicApp;
+				PRODUCT_NAME = FinchBasicApp;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -347,8 +347,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.birdbrain.FinchBasicApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = FinchBasicApp;
+				PRODUCT_NAME = FinchBasicApp;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -357,7 +357,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BA60AEB0247E8F6B0037CAFE /* Build configuration list for PBXProject "FinchBasicApp" */ = {
+		BA60AEB0247E8F6B0037CAFE /* Build configuration list for PBXProject "HummingbirdBasicApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BA60AEC7247E8F700037CAFE /* Debug */,

@@ -32,6 +32,19 @@ func clampToBounds(num: Double, minBound: Double, maxBound: Double) -> Double {
 }
 
 /**
+ * Convert raw value into a scaled magnetometer value
+ */
+public func rawToMagnetometer(_ msb: UInt8, _ lsb: UInt8) -> Int {
+    let scaledVal = rawToRawMag(msb, lsb) * 0.1 //scaling to put in units of uT
+    return Int(scaledVal.rounded())
+}
+public func rawToRawMag(_ msb: UInt8, _ lsb: UInt8) -> Double {
+    let uIntVal = (UInt16(msb) << 8) | UInt16(lsb)
+    let intVal = Int16(bitPattern: uIntVal)
+    return Double(intVal)
+}
+
+/**
  * Convert raw magnetometer value to magnetometer value in the finch reference frame
  */
 public func rawToFinchMagnetometer(_ rawMag: [UInt8]) -> [Double] {
@@ -73,12 +86,6 @@ public func rawToRawFinchAccelerometer(_ rawAcc: [UInt8]) -> [Double] {
     let finchZ = y * __sinpi(40/180) + z * __cospi(40/180)
     
     return [finchX, finchY, finchZ]
-}
-
-public func rawToRawMag(_ msb: UInt8, _ lsb: UInt8) -> Double {
-    let uIntVal = (UInt16(msb) << 8) | UInt16(lsb)
-    let intVal = Int16(bitPattern: uIntVal)
-    return Double(intVal)
 }
 
 /**
