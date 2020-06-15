@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "BirdbrainBLE",
+        "repositoryURL": "https://github.com/BirdBrainTechnologies/BirdbrainBLE",
+        "state": {
+          "branch": null,
+          "revision": "6255691dd783324192867d2ba39ad5d208348635",
+          "version": "0.4.2"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
