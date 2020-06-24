@@ -8,7 +8,7 @@ import BirdbrainBLE
 fileprivate struct Constants {
     static let expectedRawStateByteCount = 20   // Number of bytes in a Finch data packet
     
-    static let batteryVoltageConversionFactor: Float = 55.6
+    static let batteryVoltageConversionFactor: Float = 0.00937
     static let cmPerDistance = 0.0919   // Converting encoder ticks to distance in cm
     static let ticksPerCM = 49.7        // Converting distance in cm to encoder ticks
     static let ticksPerDegree = 4.335   // For converting encoder ticks to the angle the Finch has turned
@@ -66,7 +66,7 @@ public class Finch: ManageableUARTDevice {
         
         static fileprivate func parseBatteryVoltage(rawStateData: Data) -> Float {
             let battery: UInt8 = rawStateData[Constants.ByteIndex.battery]
-            return Float(battery) //Float(battery) / Constants.batteryVoltageConversionFactor
+            return (Float(battery) + 320)*Constants.batteryVoltageConversionFactor
         }
         
         static fileprivate func parseAccelerationMagnetometerCompass(rawStateData: Data) -> (Array<Double>, Array<Double>, Int?) {
@@ -378,7 +378,7 @@ public class Finch: ManageableUARTDevice {
         return uartDevice.stopStateChangeNotifications()
     }
     
-    /* This function send a Bluetooth command to calibrate the compass. When the Finch receives this command, it will dots on the micro:bit screen as it waits for you to tilt the Finch in different directions. If the calibration is successful, you will then see a check on the micro:bit screen. Otherwise, you will see an X. */
+    /* This function send a Bluetooth command to calibrate the compass. When the Finch receives this command, it will place dots on the micro:bit screen as it waits for you to tilt the Finch in different directions. If the calibration is successful, you will then see a check on the micro:bit screen. Otherwise, you will see an X. */
     public func calibrateCompass() {
         let command: [UInt8] = [0xCE, 0xFF, 0xFF, 0xFF]
         
@@ -467,9 +467,9 @@ public class Finch: ManageableUARTDevice {
             
             if (lightLeft < 0) {lightLeft = 0}
             if (lightRight < 0) {lightRight = 0}
-            
-            lightLeft = 18.0336*log(lightLeft + 1)
-            lightRight = 18.0336*log(lightRight + 1)
+
+            if (lightLeft > 100) {lightLeft = 100}
+            if (lightRight > 100) {lightRight = 100}
             
             lightLeftCorrected = Int(round(lightLeft))
             lightRightCorrected = Int(round(lightRight))
