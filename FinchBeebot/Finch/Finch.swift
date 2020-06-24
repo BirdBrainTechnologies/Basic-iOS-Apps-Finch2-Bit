@@ -468,8 +468,8 @@ public class Finch: ManageableUARTDevice {
             if (lightLeft < 0) {lightLeft = 0}
             if (lightRight < 0) {lightRight = 0}
             
-            lightLeft = 18.0336*log(lightLeft + 1)
-            lightRight = 18.0336*log(lightRight + 1)
+            if (lightLeft > 100) {lightLeft = 100}
+            if (lightRight > 100) {lightRight = 100}
             
             lightLeftCorrected = Int(round(lightLeft))
             lightRightCorrected = Int(round(lightRight))
