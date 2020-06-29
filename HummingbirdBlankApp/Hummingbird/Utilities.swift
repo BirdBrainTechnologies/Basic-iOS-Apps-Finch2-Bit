@@ -38,6 +38,7 @@ public func rawToMagnetometer(_ msb: UInt8, _ lsb: UInt8) -> Int {
     let scaledVal = rawToRawMag(msb, lsb) * 0.1 //scaling to put in units of uT
     return Int(scaledVal.rounded())
 }
+
 public func rawToRawMag(_ msb: UInt8, _ lsb: UInt8) -> Double {
     let uIntVal = (UInt16(msb) << 8) | UInt16(lsb)
     let intVal = Int16(bitPattern: uIntVal)

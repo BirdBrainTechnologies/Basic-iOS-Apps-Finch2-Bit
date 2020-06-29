@@ -12,8 +12,8 @@ fileprivate struct Constants {
     
     /* This structure contains the indices thst identify different values in a Bluetooth data packet sent by the Hummingbird. */
     fileprivate struct ByteIndex {
-        static let sensor1 = 0      // MSB = most significant byte
-        static let sensor2 = 1      // LSB = least significant byte
+        static let sensor1 = 0
+        static let sensor2 = 1
         static let sensor3 = 2
         static let battery = 3
         static let accX = 4           // 3 bytes
@@ -88,14 +88,10 @@ public class Hummingbird: ManageableUARTDevice {
             let rawMagZ = rawToMagnetometer(rawStateData[Constants.ByteIndex.magX + 4],rawStateData[Constants.ByteIndex.magX + 5])
             
             let magnetometer = Array(arrayLiteral: Double(rawMagX), Double(rawMagY), Double(rawMagZ))
+            print(magnetometer)
             
-            var compass:Int? = nil
-            if let rawCompass = DoubleToCompass(acc: accValues, mag: magnetometer) {
-                //turn it around so that the finch beak points north at 0
-                let compassScaled = (rawCompass + 180) % 360
-                compass =  Int(round(Double(compassScaled)))
-            }
-            
+            let compass:Int? = DoubleToCompass(acc: accValues, mag: magnetometer)
+        
             return (accValues, magnetometer, compass)
         }
         
